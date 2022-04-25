@@ -17,27 +17,12 @@ getArguments(RouteSettings settings) {
       arguments = "${settingsUri.queryParameters}";
     }
   }
-  if (arguments != null) {
-    logger.info(arguments);
-  }
+  logger.info(arguments);
   return arguments;
 }
 
 getRouteName(RouteSettings settings) {
-  var routingData;
-
-  if (settings.name != null) {
-    routingData = settings.name!;
-  }
-  // final args = settings.arguments;
-
-  // if (args == null) {
-  //   Uri settingsUri = Uri.parse(settings.name!);
-  //   if (settingsUri.pathSegments.length > 1) {
-  //     routingData =
-  //         "/" + settingsUri.pathSegments[settingsUri.pathSegments.length - 1];
-  //   }
-  // }
-  logger.info(routingData);
-  return routingData;
+  String routeName = Uri.parse(settings.name!).path;
+  logger.info(routeName);
+  return routeName;
 }
