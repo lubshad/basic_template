@@ -29,15 +29,15 @@ getRouteName(RouteSettings settings) {
   if (settings.name != null) {
     routingData = settings.name!;
   }
-  final args = settings.arguments;
+  // final args = settings.arguments;
 
-  if (args == null) {
-    Uri settingsUri = Uri.parse(settings.name!);
-    if (settingsUri.pathSegments.length > 1) {
-      routingData =
-          "/" + settingsUri.pathSegments[settingsUri.pathSegments.length - 1];
-    }
-  }
+  // if (args == null) {
+  //   Uri settingsUri = Uri.parse(settings.name!);
+  //   if (settingsUri.pathSegments.length > 1) {
+  //     routingData =
+  //         "/" + settingsUri.pathSegments[settingsUri.pathSegments.length - 1];
+  //   }
+  // }
   logger.info(routingData);
   return routingData;
 }
