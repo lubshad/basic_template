@@ -1,13 +1,13 @@
 library basic_template;
 
-export 'api_client.dart';
-export 'app_error.dart';
-export 'default_loading_widget.dart';
-export 'error_message_with_retry.dart';
-export 'logger.dart';
-export 'network_resource.dart';
-export 'no_params.dart';
-export 'repository_exception.dart';
-export 'usecase.dart';
-export "animate_route_builder.dart";
-export 'formatters.dart';
+export '/packages/api_client.dart';
+export '/packages/app_error.dart';
+export '/packages/default_loading_widget.dart';
+export '/packages/error_message_with_retry.dart';
+export '/packages/logger.dart';
+export '/packages/network_resource.dart';
+export '/packages/no_params.dart';
+export '/packages/repository_exception.dart';
+export '/packages/usecase.dart';
+export "/packages/animate_route_builder.dart";
+export '/packages/formatters.dart';

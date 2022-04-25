@@ -1,4 +1,5 @@
-import 'package:basic_template/app_error.dart';
+
+import 'package:basic_template/packages/app_error.dart';
 import 'package:flutter/material.dart';
 
 class ErrorMessageWithRetry extends StatelessWidget {
