@@ -23,7 +23,7 @@ getArguments(RouteSettings settings) {
   return arguments;
 }
 
-getRoutingData(RouteSettings settings) {
+getRouteName(RouteSettings settings) {
   var routingData;
 
   if (settings.name != null) {
