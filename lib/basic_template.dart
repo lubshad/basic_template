@@ -1,4 +1,4 @@
-library basic_temblate;
+library basic_template;
 
 export 'api_client.dart';
 export 'app_error.dart';

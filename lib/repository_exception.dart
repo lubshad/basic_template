@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:basic_temblate/app_error.dart';
+import 'package:basic_template/app_error.dart';
 import 'package:dartz/dartz.dart';
 
 import 'logger.dart';

@@ -1,6 +1,6 @@
-import 'package:basic_temblate/app_error.dart';
-import 'package:basic_temblate/default_loading_widget.dart';
-import 'package:basic_temblate/error_message_with_retry.dart';
+import 'package:basic_template/app_error.dart';
+import 'package:basic_template/default_loading_widget.dart';
+import 'package:basic_template/error_message_with_retry.dart';
 import 'package:flutter/material.dart';
 
 class NetworkResource extends StatelessWidget {

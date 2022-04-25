@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
-import 'package:basic_temblate/basic_temblate.dart';
+import 'package:basic_template/basic_template.dart';
 import 'package:http/http.dart';
 
 Stream<List<int>> getFileStream(Uint8List bytes) =>
@@ -17,13 +17,12 @@ class ApiClient {
       {required Map<String, dynamic> data,
       required List<MultipartFile> files,
       required String path}) async {
-    logger.info(baseUrl+ path);
+    logger.info(baseUrl + path);
     for (var element in files) {
       logger.info("${element.field}  :  ${element.filename}");
     }
 
-    var request =
-        MultipartRequest("POST", Uri.parse(baseUrl+ path));
+    var request = MultipartRequest("POST", Uri.parse(baseUrl + path));
 
     data.forEach((key, value) {
       if (value is List) {
@@ -69,7 +68,7 @@ class ApiClient {
   }
 
   Uri getPath(String path) {
-    final url = Uri.parse(baseUrl+ path);
+    final url = Uri.parse(baseUrl + path);
     return url;
   }
 }
