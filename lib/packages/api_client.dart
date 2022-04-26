@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:basic_template/basic_template.dart';
-import 'package:http/http.dart';
 
 Stream<List<int>> getFileStream(Uint8List bytes) =>
     Stream.fromIterable([bytes]);
