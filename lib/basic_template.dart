@@ -20,4 +20,5 @@ export 'package:http/http.dart'
 export 'package:flutter_web_plugins/flutter_web_plugins.dart';
 export 'package:cached_network_image/cached_network_image.dart';
 export  'package:flutter_svg/flutter_svg.dart';
+export 'package:equatable/equatable.dart';
 

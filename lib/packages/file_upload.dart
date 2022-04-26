@@ -1,4 +1,6 @@
-import 'package:http/http.dart';
+
+
+import '../basic_template.dart';
 
 class UploadFileParams {
   final Map<String, dynamic> data;
