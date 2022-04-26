@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-class NavigationController extends ChangeNotifier {
+class HomeController extends ChangeNotifier {
   Screens currentScreen = Screens.dashboard;
 
   changeCurrentScreen(Screens screen) {

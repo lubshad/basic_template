@@ -1,7 +1,8 @@
 import 'package:basic_template/basic_template.dart';
 import 'package:flutter/material.dart';
 
-import 'screens/navigation_screen/navigation_screen.dart';
+import 'screens/home/home.dart';
+
 
 class AppRoute {
   // Routes
@@ -13,7 +14,7 @@ class AppRoute {
     // final arguments = getArguments(settings);
     switch (routeName) {
       case initial:
-        return MaterialPageRoute(builder: (context) => const NavigationScreen());
+        return MaterialPageRoute(builder: (context) => const Home());
       default:
         return MaterialPageRoute(builder: (context) => Container());
     }
@@ -22,7 +23,7 @@ class AppRoute {
   static List<Route> onGenerateInitialRoute(String initialRoute) {
     return [
       MaterialPageRoute(
-        builder: (context) => const NavigationScreen(),
+        builder: (context) => const Home(),
       ),
     ];
   }
