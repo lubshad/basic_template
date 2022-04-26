@@ -17,7 +17,7 @@ class HomeDrawer extends StatelessWidget {
           return Drawer(
             child: Column(
               children: [
-                const DrawerHeader(child: Text("App Name")),
+                const DrawerHeader(child: Center(child: Text("App Name"))),
                 ...Screens.values
                     .map((e) => ListTile(
                           selected: homeController.currentScreen == e,
