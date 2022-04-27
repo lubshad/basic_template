@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 
 class NetworkResource extends StatelessWidget {
   final Widget child;
-  final Widget? loadingWidget;
-  final Widget? errorWidget;
+  final Widget loadingWidget;
+  final Widget errorWidget;
   final AppError? error;
   final bool isLoading;
 
   const NetworkResource(
       {Key? key,
       required this.child,
-      this.loadingWidget = const CircularProgressIndicator(),
+      this.loadingWidget = const Center(child: CircularProgressIndicator()),
       required this.error,
       required this.isLoading,
       this.errorWidget = const Center(
@@ -24,12 +24,12 @@ class NetworkResource extends StatelessWidget {
     return Scaffold(
       body: Builder(builder: (context) {
         if (error != null) {
-          errorWidget;
+          return errorWidget;
+        } else if (isLoading) {
+          return loadingWidget;
+        } else {
+          return child;
         }
-        if (isLoading) {
-          return loadingWidget!;
-        }
-        return child;
       }),
     );
   }
