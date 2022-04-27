@@ -1,4 +1,3 @@
-
 import 'package:basic_template/packages/app_error.dart';
 import 'package:basic_template/packages/default_loading_widget.dart';
 import 'package:flutter/material.dart';
@@ -23,12 +22,16 @@ class NetworkResource extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (error != null) {
-      return ErrorMessageWithRetry(error: error!, retry: retry);
-    }
-    if (isLoading) {
-      return loadingWidget!;
-    }
-    return child;
+    return Scaffold(
+      body: Builder(builder: (context) {
+        if (error != null) {
+          return ErrorMessageWithRetry(error: error!, retry: retry);
+        }
+        if (isLoading) {
+          return loadingWidget!;
+        }
+        return child;
+      }),
+    );
   }
 }
