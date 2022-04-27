@@ -21,8 +21,9 @@ class NetworkResource extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Builder(builder: (context) {
+    return Material(
+      color: Colors.transparent,
+      child: Builder(builder: (context) {
         if (error != null) {
           return errorWidget;
         } else if (isLoading) {
