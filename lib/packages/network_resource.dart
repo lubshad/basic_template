@@ -1,23 +1,22 @@
 import 'package:basic_template/packages/app_error.dart';
-import 'package:basic_template/packages/default_loading_widget.dart';
 import 'package:flutter/material.dart';
-
-import 'error_message_with_retry.dart';
 
 class NetworkResource extends StatelessWidget {
   final Widget child;
   final Widget? loadingWidget;
+  final Widget? errorWidget;
   final AppError? error;
-  final VoidCallback retry;
   final bool isLoading;
 
   const NetworkResource(
       {Key? key,
       required this.child,
-      this.loadingWidget = const DefaultLoadingWidget(),
+      this.loadingWidget = const CircularProgressIndicator(),
       required this.error,
-      required this.retry,
-      required this.isLoading})
+      required this.isLoading,
+      this.errorWidget = const Center(
+        child: Text("Unexpected Error"),
+      )})
       : super(key: key);
 
   @override
@@ -25,7 +24,7 @@ class NetworkResource extends StatelessWidget {
     return Scaffold(
       body: Builder(builder: (context) {
         if (error != null) {
-          return ErrorMessageWithRetry(error: error!, retry: retry);
+          errorWidget;
         }
         if (isLoading) {
           return loadingWidget!;

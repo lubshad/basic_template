@@ -3,7 +3,6 @@ library basic_template;
 export '/packages/api_client.dart';
 export '/packages/app_error.dart';
 export '/packages/default_loading_widget.dart';
-export '/packages/error_message_with_retry.dart';
 export '/packages/logger.dart';
 export '/packages/network_resource.dart';
 export '/packages/no_params.dart';

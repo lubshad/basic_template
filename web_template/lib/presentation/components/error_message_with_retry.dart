@@ -1,6 +1,6 @@
-
-import 'package:basic_template/packages/app_error.dart';
+import 'package:basic_template/basic_template.dart';
 import 'package:flutter/material.dart';
+import 'package:web_template/utils/extensions.dart';
 
 class ErrorMessageWithRetry extends StatelessWidget {
   const ErrorMessageWithRetry({
@@ -18,10 +18,16 @@ class ErrorMessageWithRetry extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          SvgPicture.asset(
+            error.appErrorType.svgImage,
+            height: 500,
+            width: 500,
+            fit: BoxFit.cover,
+          ),
           Text(error.appErrorType.toString()),
           TextButton(
-            child: const Text("Retry"),
             onPressed: retry,
+            child: const Text("Retry"),
           ),
         ],
       ),
