@@ -70,4 +70,12 @@ class ApiClient {
     final url = Uri.parse(baseUrl + path);
     return url;
   }
+
+  static String jsonToQuery(Map<String, dynamic> json) {
+    return json.keys.map((key) {
+      return Uri.encodeQueryComponent(key) +
+          '=' +
+          Uri.encodeQueryComponent(json[key].toString());
+    }).join('&');
+  } 
 }
