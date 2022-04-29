@@ -60,7 +60,7 @@ class ApiClient {
         },
       );
       logger.info(json.decode(response.body));
-      return json.decode(response.body);
+      return jsonDecode(utf8.decode(response.bodyBytes));
     } catch (e) {
       throw Exception(e.toString());
     }
