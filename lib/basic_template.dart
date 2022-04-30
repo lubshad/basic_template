@@ -12,7 +12,6 @@ export "/packages/animate_route_builder.dart";
 export '/packages/formatters.dart';
 export '/packages/route_utils.dart';
 export 'package:dartz/dartz.dart' hide State;
-export '/packages/file_upload.dart';
 export 'package:get/get.dart' hide MultipartFile, Response;
 export 'package:http/http.dart'
     show Client, MultipartFile, MultipartRequest, Response;
