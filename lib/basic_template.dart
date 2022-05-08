@@ -15,6 +15,7 @@ export 'package:dartz/dartz.dart' hide State;
 export 'package:get/get.dart' hide MultipartFile, Response;
 export 'package:http/http.dart'
     show Client, MultipartFile, MultipartRequest, Response;
+export 'package:flutter_web_plugins/url_strategy.dart';
 export 'package:cached_network_image/cached_network_image.dart';
 export 'package:flutter_svg/flutter_svg.dart';
 export 'package:equatable/equatable.dart';
