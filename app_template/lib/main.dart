@@ -1,5 +1,7 @@
-import 'package:app_template/utils/setup_app.dart';
+
 import 'package:basic_template/basic_template.dart';
+
+import 'utils/setup_app.dart';
 import 'package:flutter/material.dart';
 import 'presentation/route.dart';
 import 'presentation/theme.dart';
