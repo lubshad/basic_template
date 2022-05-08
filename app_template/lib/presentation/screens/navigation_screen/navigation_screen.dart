@@ -16,6 +16,7 @@ class NavigationScreen extends StatelessWidget {
           return Scaffold(
             body: navigationController.currentScreen.body,
             bottomNavigationBar: BottomNavigationBar(
+              currentIndex: navigationController.currentScreen.index,
                 items: Screens.values
                     .map((e) =>
                         BottomNavigationBarItem(icon: e.icon, label: e.label))
