@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AppTheme.setSystemOverlay();
     return GetMaterialApp(
       title: "App Name",
       theme: AppTheme.theme,

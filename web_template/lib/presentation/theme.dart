@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 
 class AppTheme {
 
-  setSystemOverlay() {
+  static setSystemOverlay() {
     if (kIsWeb) return;
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,

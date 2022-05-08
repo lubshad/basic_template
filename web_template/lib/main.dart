@@ -1,4 +1,3 @@
-
 import 'package:basic_template/basic_template.dart';
 import 'package:flutter/material.dart';
 import 'presentation/route.dart';
@@ -17,6 +16,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AppTheme.setSystemOverlay();
     return GetMaterialApp(
       title: "App Name",
       theme: AppTheme.theme,
