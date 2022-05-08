@@ -62,7 +62,7 @@ class ApiClient {
       logger.info(json.decode(response.body));
       return jsonDecode(utf8.decode(response.bodyBytes));
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
 
