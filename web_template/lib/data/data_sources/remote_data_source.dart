@@ -14,7 +14,7 @@ class RemoteDataSourceImplementation implements RemoteDataSource {
   @override
   Future<dynamic> getData(dynamic params) async {
     final response =
-        await _apiClient.post(ApiConstants.getData, params);
+        await _apiClient.post(ApiConstants.baseUrl, params);
     return response;
   }
 }

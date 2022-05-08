@@ -2,11 +2,19 @@ import 'package:flutter/foundation.dart';
 
 class ApiConstants {
   ApiConstants._();
-  static String get baseUrl => domainUrl + slugUrl;
+  // local
   static String get domainUrl =>
-      kDebugMode ? "http://127.0.0.1:8000" : "http://143.244.138.169";
-  static const String slugUrl = "/folldy_presentation/api/";
-  static const String getData = "get_data";
+      kDebugMode ? "http://localhost" : "http://143.244.138.169";
+
+  static String get baseUrl =>
+      kDebugMode ? "$domainUrl:8000$slugUrl" : domainUrl + slugUrl;
+
+  static String presentationEditorUrl =
+      kDebugMode ? "$domainUrl:8002/" : "$domainUrl/presentation/";
+
+  static String presentationViewerUrl =
+      kDebugMode ? "$domainUrl:8003/" : "$domainUrl/presentation_view/";
+  static const String slugUrl = "/folldy_admin/api/";
 }
 
 getImageUrl(String url) {
