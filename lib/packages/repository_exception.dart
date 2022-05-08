@@ -13,11 +13,11 @@ mixin RepositoryExceptionMixin {
     try {
       final result = await computation;
       return Right(result);
-    } on SocketException {
-      logger.severe("Check Network Connection");
+    } on SocketException catch (e) {
+      logger.severe("Check Network Connection", e);
       return const Left(AppError(AppErrorType.network));
-    } on Exception {
-      logger.severe("Something went wrong");
+    } on Exception catch (e) {
+      logger.severe("Something went wrong", e);
       return const Left(AppError(AppErrorType.api));
     }
   }

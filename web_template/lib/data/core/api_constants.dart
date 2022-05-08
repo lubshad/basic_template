@@ -9,7 +9,7 @@ class ApiConstants {
   static String get baseUrl =>
       kDebugMode ? "$domainUrl:8000$slugUrl" : domainUrl + slugUrl;
 
-  static String presentationEditorUrl =
+static String presentationEditorUrl =
       kDebugMode ? "$domainUrl:8002/" : "$domainUrl/presentation/";
 
   static String presentationViewerUrl =
