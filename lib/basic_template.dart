@@ -20,3 +20,4 @@ export 'package:cached_network_image/cached_network_image.dart';
 export 'package:flutter_svg/flutter_svg.dart';
 export 'package:equatable/equatable.dart';
 export 'package:google_fonts/google_fonts.dart';
+export 'package:animations/animations.dart';
