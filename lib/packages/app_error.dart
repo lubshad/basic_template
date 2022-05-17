@@ -1,6 +1,5 @@
+import 'package:basic_template/basic_template.dart';
 import 'package:equatable/equatable.dart';
-
-import 'logger.dart';
 
 class AppError extends Equatable {
   final AppErrorType appErrorType;
@@ -9,15 +8,6 @@ class AppError extends Equatable {
 
   @override
   List<Object> get props => [appErrorType];
-
-  handleError() {
-    logger.info(appErrorType);
-  }
 }
 
 enum AppErrorType { api, network, database, unauthorised, sessionDenied }
-
-
-
-
-

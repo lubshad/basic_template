@@ -1,4 +1,5 @@
 import 'package:basic_template/basic_template.dart';
+import 'package:flutter/material.dart';
 
 extension AppErrorTypeExtension on AppErrorType {
   String get message {
@@ -29,5 +30,17 @@ extension AppErrorTypeExtension on AppErrorType {
       case AppErrorType.sessionDenied:
         return 'assets/svgs/session_denied_error.svg';
     }
+  }
+}
+
+
+extension AppErrorExtension on AppError {
+   handleError() {
+    logger.info(appErrorType);
+    ScaffoldMessenger.of(Get.context!).showSnackBar(
+      SnackBar(
+        content: Text(appErrorType.message),
+      ),
+    );
   }
 }
