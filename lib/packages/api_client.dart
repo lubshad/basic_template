@@ -59,7 +59,7 @@ class ApiClient {
           'Content-Type': 'application/json',
         },
       );
-      logger.info(json.decode(response.body));
+      logger.info(jsonDecode(utf8.decode(response.bodyBytes)));
       return jsonDecode(utf8.decode(response.bodyBytes));
     } catch (e) {
       rethrow;
