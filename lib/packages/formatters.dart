@@ -21,7 +21,7 @@ durationToHoursDouble(Duration duration) {
 
 durationToMs(Duration duration) {
   if (duration == Duration.zero) return "00:00";
-  
+
   int totalMinutes = duration.inMinutes;
   int totalSeconds = duration.inSeconds;
 
@@ -64,4 +64,8 @@ DateTime ddmmyyyToDateTime(String date) {
   final String year = date.split("-")[2];
 
   return DateTime(int.parse(year), int.parse(month), int.parse(day));
+}
+
+String dateFieldFromDateTime(DateTime dateTime) {
+  return DateFormat("yyyy-MM-DD").format(dateTime);
 }
