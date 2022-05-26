@@ -29,7 +29,7 @@ class ErrorMessageWithRetry extends StatelessWidget {
             },
           ),
           defaultSpacer,
-          Text(error.appErrorType.toString()),
+          Text(error.appErrorType.message , textAlign: TextAlign.center),
           TextButton(
             onPressed: retry,
             child: const Text("Retry"),
