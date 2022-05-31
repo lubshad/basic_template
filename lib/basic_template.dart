@@ -1,5 +1,7 @@
 library basic_template;
 
+
+export 'package:logging/logging.dart';
 export '/packages/api_client.dart';
 export '/packages/app_error.dart';
 export '/packages/default_loading_widget.dart';
@@ -12,7 +14,7 @@ export "/packages/animate_route_builder.dart";
 export '/packages/formatters.dart';
 export '/packages/route_utils.dart';
 export 'package:dartz/dartz.dart' hide State;
-export 'package:get/get.dart' hide MultipartFile, Response;
+export 'package:get/get.dart' hide MultipartFile, Response, Rx;
 export 'package:http/http.dart'
     show Client, MultipartFile, MultipartRequest, Response;
 export 'package:flutter_web_plugins/url_strategy.dart';
@@ -21,3 +23,4 @@ export 'package:flutter_svg/flutter_svg.dart';
 export 'package:equatable/equatable.dart';
 export 'package:google_fonts/google_fonts.dart';
 export 'package:animations/animations.dart';
+export 'package:rxdart/rxdart.dart' hide Subject;

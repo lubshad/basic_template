@@ -28,7 +28,7 @@ class ApiClient {
         for (var element in value) {
           final index = value.indexOf(element);
           final fieldString = key + "[$index]";
-          request.fields[fieldString] = element;
+          request.fields[fieldString] = element.toString();
         }
       } else {
         request.fields[key] = value.toString();

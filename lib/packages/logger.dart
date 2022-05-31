@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
-import 'package:logging/logging.dart';
+
+import '../basic_template.dart';
 
 final logger = Logger('App');
 
@@ -14,7 +17,9 @@ void setupLogger() {
     } else if (record.level == Level.SEVERE) {
       emoji = '⛔️';
     }
-    debugPrint('$emoji   ${record.level.name}: ${record.message}');
+    final message = '$emoji   ${record.level.name}: ${record.message}';
+    // debugPrint(message);
+    log(message);
     if (record.error != null) {
       debugPrint('👉 ${record.error}');
     }
