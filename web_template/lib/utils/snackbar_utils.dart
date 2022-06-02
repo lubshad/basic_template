@@ -7,3 +7,22 @@ void showErrorMessage(r) {
     content: Text(r.toString()),
     ));
   }
+
+
+enum PopupOptions {
+  edit,
+  delete,
+}
+
+extension PopupOptionsExtension on PopupOptions {
+  String get title {
+    switch (this) {
+      case PopupOptions.edit:
+        return 'Edit';
+      case PopupOptions.delete:
+        return 'Delete';
+      default:
+        return '';
+    }
+  }
+}
