@@ -24,3 +24,4 @@ export 'package:equatable/equatable.dart';
 export 'package:google_fonts/google_fonts.dart';
 export 'package:animations/animations.dart';
 export 'package:rxdart/rxdart.dart' hide Subject;
+export 'package:flutter_cache_manager/flutter_cache_manager.dart';
