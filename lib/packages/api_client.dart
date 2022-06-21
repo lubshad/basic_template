@@ -66,13 +66,32 @@ class ApiClient {
     }
   }
 
+   dynamic get(String path, Map<String, dynamic>? params) async {
+    try {
+      logger.info(getPath(path));
+      logger.info(jsonEncode(params));
+      final response = await _client.get(
+        Uri.parse(baseUrl + path+jsonToQuery(params)),
+        // body: jsonEncode(params),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      );
+      logger.info(jsonDecode(utf8.decode(response.bodyBytes)));
+      return jsonDecode(utf8.decode(response.bodyBytes));
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   Uri getPath(String path) {
     final url = Uri.parse(baseUrl + path);
     return url;
   }
 
-  static String jsonToQuery(Map<String, dynamic> json) {
-    return "?" +
+  static String jsonToQuery(Map<String, dynamic>? json) {
+    
+    return json == null ? "":  "?" +
         json.keys.map((key) {
           return Uri.encodeQueryComponent(key) +
               '=' +
