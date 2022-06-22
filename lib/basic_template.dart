@@ -25,3 +25,9 @@ export 'package:google_fonts/google_fonts.dart';
 export 'package:animations/animations.dart';
 export 'package:rxdart/rxdart.dart' hide Subject;
 export 'package:flutter_cache_manager/flutter_cache_manager.dart';
+export 'package:firebase_core/firebase_core.dart';
+export 'package:permission_handler/permission_handler.dart';
+export 'package:path_provider/path_provider.dart';
+export 'package:get_storage/get_storage.dart';
+
+
