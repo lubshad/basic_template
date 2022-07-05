@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:basic_template/basic_template.dart';
+import 'package:flutter/foundation.dart';
 
 Stream<List<int>> getFileStream(Uint8List bytes) =>
     Stream.fromIterable([bytes]);
@@ -43,7 +44,7 @@ class ApiClient {
 
     final response = await request.send();
     var httpResponse = await Response.fromStream(response);
-    final jsonresposne = json.decode(httpResponse.body);
+    final jsonresposne = await compute(jsonDecode, httpResponse.body);
     logger.info(jsonresposne);
     return jsonresposne;
   }
@@ -51,34 +52,38 @@ class ApiClient {
   dynamic post(String path, Map<dynamic, dynamic>? params) async {
     try {
       logger.info(getPath(path));
-      logger.info(jsonEncode(params));
+      var encodedParams = await compute(jsonEncode, params);
       final response = await _client.post(
         getPath(path),
-        body: jsonEncode(params),
+        body: encodedParams,
         headers: {
           'Content-Type': 'application/json',
         },
       );
-      logger.info(jsonDecode(utf8.decode(response.bodyBytes)));
-      return jsonDecode(utf8.decode(response.bodyBytes));
+      var utfDecoded = await compute(utf8.decode, response.bodyBytes);
+      var decodedData = await compute(jsonDecode, utfDecoded);
+      logger.info(decodedData);
+      return decodedData;
     } catch (e) {
       rethrow;
     }
   }
 
-   dynamic get(String path, Map<String, dynamic>? params) async {
+  dynamic get(String path, Map<String, dynamic>? params) async {
     try {
       logger.info(getPath(path));
-      logger.info(jsonEncode(params));
+      logger.info(params);
       final response = await _client.get(
-        Uri.parse(baseUrl + path+jsonToQuery(params)),
+        Uri.parse(baseUrl + path + jsonToQuery(params)),
         // body: jsonEncode(params),
         headers: {
           'Content-Type': 'application/json',
         },
       );
-      logger.info(jsonDecode(utf8.decode(response.bodyBytes)));
-      return jsonDecode(utf8.decode(response.bodyBytes));
+      var utfDecoded = await compute(utf8.decode, response.bodyBytes);
+      var decodedData = await compute(jsonDecode, utfDecoded);
+      logger.info(decodedData);
+      return decodedData;
     } catch (e) {
       rethrow;
     }
@@ -90,12 +95,13 @@ class ApiClient {
   }
 
   static String jsonToQuery(Map<String, dynamic>? json) {
-    
-    return json == null ? "":  "?" +
-        json.keys.map((key) {
-          return Uri.encodeQueryComponent(key) +
-              '=' +
-              Uri.encodeQueryComponent(json[key].toString());
-        }).join('&');
+    return json == null
+        ? ""
+        : "?" +
+            json.keys.map((key) {
+              return Uri.encodeQueryComponent(key) +
+                  '=' +
+                  Uri.encodeQueryComponent(json[key].toString());
+            }).join('&');
   }
 }
