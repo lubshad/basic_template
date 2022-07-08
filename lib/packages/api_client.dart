@@ -44,7 +44,8 @@ class ApiClient {
 
     final response = await request.send();
     var httpResponse = await Response.fromStream(response);
-    final jsonresposne = await compute(jsonDecode, httpResponse.body);
+    final jsonresposne = jsonDecode(httpResponse.body);
+    // final jsonresposne = await compute(jsonDecode, httpResponse.body);
     logger.info(jsonresposne);
     return jsonresposne;
   }
@@ -52,7 +53,9 @@ class ApiClient {
   dynamic post(String path, Map<dynamic, dynamic>? params) async {
     try {
       logger.info(getPath(path));
-      var encodedParams = await compute(jsonEncode, params);
+      var encodedParams = jsonEncode(params);
+      // var encodedParams = await compute(jsonEncode, params);
+      logger.info(encodedParams);
       final response = await _client.post(
         getPath(path),
         body: encodedParams,
@@ -60,8 +63,10 @@ class ApiClient {
           'Content-Type': 'application/json',
         },
       );
-      var utfDecoded = await compute(utf8.decode, response.bodyBytes);
-      var decodedData = await compute(jsonDecode, utfDecoded);
+      var utfDecoded = utf8.decode(response.bodyBytes);
+      // var utfDecoded = await compute(utf8.decode, response.bodyBytes);
+      var decodedData =jsonDecode(utfDecoded);
+      // var decodedData = await compute(jsonDecode, utfDecoded);
       logger.info(decodedData);
       return decodedData;
     } catch (e) {
@@ -80,8 +85,10 @@ class ApiClient {
           'Content-Type': 'application/json',
         },
       );
-      var utfDecoded = await compute(utf8.decode, response.bodyBytes);
-      var decodedData = await compute(jsonDecode, utfDecoded);
+      var utfDecoded = utf8.decode(response.bodyBytes);
+      // var utfDecoded = await compute(utf8.decode, response.bodyBytes);
+      var decodedData = jsonDecode(utfDecoded);
+      // var decodedData = await compute(jsonDecode, utfDecoded);
       logger.info(decodedData);
       return decodedData;
     } catch (e) {
