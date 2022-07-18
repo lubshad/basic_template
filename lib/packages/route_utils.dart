@@ -11,13 +11,14 @@ getArguments(RouteSettings settings) {
 
   if (args != null) {
     arguments = args;
+    logger.info(arguments);
   } else {
     Uri settingsUri = Uri.parse(settings.name!);
     if (settingsUri.hasQuery) {
-      arguments = "${settingsUri.queryParameters}";
+      arguments = settingsUri.queryParameters;
+      logger.info(arguments);
     }
   }
-  logger.info(arguments);
   return arguments;
 }
 
