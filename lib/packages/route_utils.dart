@@ -15,8 +15,13 @@ getArguments(RouteSettings settings) {
   } else {
     Uri settingsUri = Uri.parse(settings.name!);
     if (settingsUri.hasQuery) {
-      arguments = settingsUri.queryParameters;
-      logger.info(arguments);
+      Map<String, dynamic> queryParams = {};
+      settingsUri.queryParameters.forEach((key, value) {
+        var queryValue = int.tryParse(value) ?? value;
+        queryParams[key] = queryValue;
+      });
+      logger.info(queryParams);
+      arguments = queryParams;
     }
   }
   return arguments;
