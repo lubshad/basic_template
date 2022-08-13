@@ -1,6 +1,5 @@
 library basic_template;
 
-
 export 'package:logging/logging.dart';
 export '/packages/api_client.dart';
 export '/packages/app_error.dart';
@@ -12,6 +11,7 @@ export '/packages/repository_exception.dart';
 export '/packages/usecase.dart';
 export "/packages/animate_route_builder.dart";
 export '/packages/formatters.dart';
+export '/packages/image_picker_service.dart';
 export '/packages/route_utils.dart';
 export 'package:dartz/dartz.dart' hide State;
 export 'package:get/get.dart' hide MultipartFile, Response, Rx;
@@ -37,6 +37,4 @@ export 'package:http_parser/http_parser.dart';
 export 'package:shimmer/shimmer.dart';
 export 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 export 'package:share_plus/share_plus.dart';
-
-
 
