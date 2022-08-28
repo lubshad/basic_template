@@ -38,3 +38,4 @@ export 'package:shimmer/shimmer.dart';
 export 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 export 'package:share_plus/share_plus.dart';
 export 'package:intl/intl.dart';
+export 'package:url_launcher/url_launcher.dart';

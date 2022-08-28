@@ -1,6 +1,7 @@
-import 'package:url_launcher/url_launcher.dart';
 
-Future<void> launchInBrowser(Uri url) async {
+import 'package:basic_template/basic_template.dart';
+
+Future<void> urlLauncher(Uri url) async {
   if (await canLaunchUrl(url)) {
     await launchUrl(url, mode: LaunchMode.externalApplication);
   } else {
