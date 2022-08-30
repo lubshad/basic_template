@@ -1,5 +1,3 @@
-import 'package:get/get_connect/http/src/exceptions/exceptions.dart';
-
 class UnAuthorizedException implements Exception {
   final String message;
   UnAuthorizedException(this.message);
@@ -9,7 +7,6 @@ class UnAuthorizedException implements Exception {
 
 class ApiException implements Exception {
   final String message;
-
   ApiException(this.message);
   @override
   String toString() => message;
