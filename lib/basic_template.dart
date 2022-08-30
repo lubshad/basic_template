@@ -9,6 +9,7 @@ export '/packages/network_resource.dart';
 export '/packages/no_params.dart';
 export '/packages/repository_exception.dart';
 export '/packages/usecase.dart';
+export '/packages/exceptions.dart';
 export "/packages/animate_route_builder.dart";
 export '/packages/formatters.dart';
 export '/packages/image_picker_service.dart';

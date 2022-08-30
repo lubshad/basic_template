@@ -1,10 +1,8 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:dartz/dartz.dart';
-
-import 'app_error.dart';
-import 'logger.dart';
+import 'package:basic_template/basic_template.dart';
+import 'package:get/get_connect/http/src/exceptions/exceptions.dart';
 
 mixin RepositoryExceptionMixin {
   Future<Either<AppError, T>> exceptionHandler<T>(
@@ -16,9 +14,12 @@ mixin RepositoryExceptionMixin {
     } on SocketException catch (e) {
       logger.severe("Check Network Connection", e);
       return const Left(AppError(AppErrorType.network));
-    } on Exception catch (e) {
+    } on ApiException catch (e) {
       logger.severe("Something went wrong", e);
-      return const Left(AppError(AppErrorType.api));
+      return Left(AppError(AppErrorType.api, message: e.toString()));
+    } on UnauthorizedException catch (e) {
+      logger.info("Unauthorized ", e);
+      return Left(AppError(AppErrorType.unauthorised, message: e.toString()));
     }
   }
 }
