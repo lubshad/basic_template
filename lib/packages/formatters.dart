@@ -12,6 +12,14 @@ durationToHms(Duration duration) {
   return "${totalHours.toString().padLeft(2, "0")}:${minutes.toString().padLeft(2, "0")}:${seconds.toString().padLeft(2, "0")}";
 }
 
+
+
+TimeOfDay stringToTimeOfDay(String tod) {
+  final format = DateFormat.jm(); //"6:00 AM"
+  return TimeOfDay.fromDateTime(format.parse(tod));
+}
+
+
 durationToHoursDouble(Duration duration) {
   int totalMinutes = duration.inMinutes;
   double hours = 0;
