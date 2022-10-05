@@ -8,11 +8,14 @@ import 'package:image_cropper/image_cropper.dart';
 class ImagePickerService {
   Future<PlatformFile?> pickFile() async {
     try {
-      final result = (await FilePicker.platform.pickFiles(
-        type: FileType.image,
-      ));
-      if (result == null) return null;
-      return result.files.first;
+      final requestStatus = await Permission.storage.request();
+      if (requestStatus.isGranted) {
+        final result = (await FilePicker.platform.pickFiles(
+          type: FileType.image,
+        ));
+        if (result == null) return null;
+        return result.files.first;
+      }
     } on PlatformException catch (e) {
       _logException('Unsupported operation$e');
     } catch (e) {
