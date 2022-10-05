@@ -9,6 +9,7 @@ class ImagePickerService {
   Future<PlatformFile?> pickFile() async {
     try {
       final requestStatus = await Permission.storage.request();
+      _logException(requestStatus.toString());
       if (requestStatus.isGranted) {
         final result = (await FilePicker.platform.pickFiles(
           type: FileType.image,
