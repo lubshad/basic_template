@@ -27,7 +27,7 @@ class ApiClient {
       if (value is List) {
         for (var element in value) {
           final index = value.indexOf(element);
-          final fieldString = key + "[$index]";
+          final fieldString = "$key[$index]";
           request.fields[fieldString] = element.toString();
         }
       } else {
@@ -67,7 +67,6 @@ class ApiClient {
     }
   }
 
-
   dynamic get(String path, Map<String, dynamic>? params) async {
     Map<String, String> headers = {
       'Content-Type': 'application/json',
@@ -96,11 +95,8 @@ class ApiClient {
   static String jsonToQuery(Map<String, dynamic>? json) {
     return json == null
         ? ""
-        : "?" +
-            json.keys.map((key) {
-              return Uri.encodeQueryComponent(key) +
-                  '=' +
-                  Uri.encodeQueryComponent(json[key].toString());
-            }).join('&');
+        : "?${json.keys.map((key) {
+            return '${Uri.encodeQueryComponent(key)}=${Uri.encodeQueryComponent(json[key].toString())}';
+          }).join('&')}";
   }
 }

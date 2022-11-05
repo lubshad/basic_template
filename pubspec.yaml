@@ -21,25 +21,25 @@ dependencies:
   logging: ^1.0.2
   cached_network_image: ^3.2.0
   flutter_svg: ^1.0.3
-  google_fonts: ^2.3.2
+  google_fonts: ^3.0.1
   flutter_cache_manager: ^3.3.0
   permission_handler: ^10.0.0
-  firebase_core: ^1.18.0
+  firebase_core: ^2.1.1
   path_provider: ^2.0.11
   get_storage: ^2.0.3
   sqflite: ^2.0.3
   url_launcher: ^6.1.4
-  package_info_plus: ^1.4.2
-  file_picker: ^4.6.1
+  package_info_plus: ^3.0.1
+  file_picker: ^5.2.2
   shimmer: ^2.0.0
-  firebase_dynamic_links: ^4.3.3
-  share_plus: ^4.0.10
+  firebase_dynamic_links: ^5.0.4
+  share_plus: ^6.2.0
   image_cropper: ^3.0.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^1.0.0
+  flutter_lints: ^2.0.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

@@ -12,13 +12,10 @@ durationToHms(Duration duration) {
   return "${totalHours.toString().padLeft(2, "0")}:${minutes.toString().padLeft(2, "0")}:${seconds.toString().padLeft(2, "0")}";
 }
 
-
-
 TimeOfDay stringToTimeOfDay(String tod) {
   final format = DateFormat.jm(); //"6:00 AM"
   return TimeOfDay.fromDateTime(format.parse(tod));
 }
-
 
 durationToHoursDouble(Duration duration) {
   int totalMinutes = duration.inMinutes;
@@ -38,7 +35,6 @@ durationToMs(Duration duration) {
 
   return "${minutes.toString().padLeft(2, "0")}:${seconds.toString().padLeft(2, "0")}";
 }
-
 
 timeStringToDateTime(String time) {
   String hour = time.split(':').first;
@@ -60,7 +56,7 @@ String dateTimeToString(DateTime dateTime) {
 String dateRangeToString(DateTimeRange dateTime) {
   final startDate = DateFormat("dd-MM-yyyy").format(dateTime.start);
   final endDate = DateFormat("dd-MM-yyyy").format(dateTime.end);
-  return startDate + " - " + endDate;
+  return "$startDate - $endDate";
 }
 
 String dateTimeToDateTimeString(DateTime dateTime) {
