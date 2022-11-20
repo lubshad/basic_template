@@ -11,7 +11,7 @@ getArguments(RouteSettings settings) {
 
   if (args != null) {
     arguments = args;
-    logger.info(arguments);
+    logInfo(arguments);
   } else {
     Uri settingsUri = Uri.parse(settings.name!);
     if (settingsUri.hasQuery) {
@@ -20,7 +20,7 @@ getArguments(RouteSettings settings) {
         var queryValue = int.tryParse(value) ?? value;
         queryParams[key] = queryValue;
       });
-      logger.info(queryParams);
+      logInfo(queryParams);
       arguments = queryParams;
     }
   }
@@ -29,6 +29,6 @@ getArguments(RouteSettings settings) {
 
 getRouteName(RouteSettings settings) {
   String routeName = Uri.parse(settings.name!).path;
-  logger.info(routeName);
+  logInfo(routeName);
   return routeName;
 }

@@ -16,9 +16,9 @@ class ApiClient {
       {required Map<String, dynamic> data,
       required List<MultipartFile> files,
       required String path}) async {
-    logger.info(baseUrl + path);
+    logInfo(baseUrl + path);
     for (var element in files) {
-      logger.info("${element.field}  :  ${element.filename}");
+      logInfo("${element.field}  :  ${element.filename}");
     }
 
     var request = MultipartRequest("POST", Uri.parse(baseUrl + path));
@@ -35,7 +35,7 @@ class ApiClient {
       }
     });
 
-    logger.info(request.fields);
+    logInfo(request.fields);
 
     for (var element in files) {
       request.files.add(element);
@@ -44,7 +44,7 @@ class ApiClient {
     final response = await request.send();
     var httpResponse = await Response.fromStream(response);
     final jsonresposne = jsonDecode(httpResponse.body);
-    logger.info(jsonresposne);
+    logInfo(jsonresposne);
     return jsonresposne;
   }
 
@@ -53,14 +53,14 @@ class ApiClient {
       'Content-Type': 'application/json',
     };
     try {
-      logger.info(getPath(path));
+      logInfo(getPath(path));
       var encodedParams = jsonEncode(params);
-      logger.info(encodedParams);
+      logInfo(encodedParams);
       final response = await _client.post(getPath(path),
           body: encodedParams, headers: headers);
       var utfDecoded = utf8.decode(response.bodyBytes);
       var decodedData = jsonDecode(utfDecoded);
-      logger.info(decodedData);
+      logInfo(decodedData);
       return decodedData;
     } catch (e) {
       rethrow;
@@ -72,15 +72,15 @@ class ApiClient {
       'Content-Type': 'application/json',
     };
     try {
-      logger.info(getPath(path));
-      logger.info(params);
+      logInfo(getPath(path));
+      logInfo(params);
       final response = await _client.get(
         Uri.parse(baseUrl + path + jsonToQuery(params)),
         headers: headers,
       );
       var utfDecoded = utf8.decode(response.bodyBytes);
       var decodedData = jsonDecode(utfDecoded);
-      logger.info(decodedData);
+      logInfo(decodedData);
       return decodedData;
     } catch (e) {
       rethrow;

@@ -12,13 +12,13 @@ mixin RepositoryExceptionMixin {
       final result = await computation;
       return Right(result);
     } on SocketException catch (e) {
-      logger.severe("Check Network Connection", e);
+      logError("Check Network Connection $e");
       return const Left(AppError(AppErrorType.network));
     } on ApiException catch (e) {
-      logger.severe("Something went wrong", e);
+      logError("Something went wrong $e");
       return Left(AppError(AppErrorType.api, message: e.toString()));
     } on UnauthorizedException catch (e) {
-      logger.info("Unauthorized ", e);
+      logInfo("Unauthorized  $e");
       return Left(AppError(AppErrorType.unauthorised, message: e.toString()));
     }
   }

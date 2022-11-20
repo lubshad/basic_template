@@ -28,7 +28,7 @@ class ImagePickerService {
   Future<File?> pickImage() async {
     final imageFile = await pickFile();
     if (imageFile == null) return null;
-    logger.info("Picked file ${imageFile.size}");
+    logInfo("Picked file ${imageFile.size}");
     final croppedImagePath = await cropImage(imageFile);
     return croppedImagePath;
   }
@@ -36,7 +36,7 @@ class ImagePickerService {
   final _scaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
 
   void _logException(String message) {
-    logger.info(message);
+    logInfo(message);
     _scaffoldMessengerKey.currentState?.hideCurrentSnackBar();
     _scaffoldMessengerKey.currentState?.showSnackBar(
       SnackBar(
@@ -64,7 +64,7 @@ class ImagePickerService {
     );
     if (croppedFile == null) return null;
     File croppd = File(croppedFile.path);
-    logger.info("cropped  ${croppd.lengthSync()}");
+    logInfo("cropped  ${croppd.lengthSync()}");
     return croppd;
   }
 }
