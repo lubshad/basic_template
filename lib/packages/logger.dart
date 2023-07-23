@@ -1,24 +1,51 @@
 // ignore_for_file: avoid_print
 
-
 // Blue text
+
+import 'dart:convert';
+import 'dart:developer';
+
 void logInfo(msg) {
-  print('\x1B[34m$msg\x1B[0m');
+  String? jsonData;
+  try {
+    jsonData = jsonEncode(msg);
+  } catch (e) {
+    jsonData = msg.toString();
+  }
+  log('\x1B[34m$jsonData\x1B[0m');
 }
 
 // Green text
 void logSuccess(msg) {
-  print(
-    '\x1B[32m$msg\x1B[0m',
+  String? jsonData;
+  try {
+    jsonData = jsonEncode(msg);
+  } catch (e) {
+    jsonData = msg.toString();
+  }
+  log(
+    '\x1B[32m$jsonData\x1B[0m',
   );
 }
 
 // Yellow text
 void logWarning(msg) {
-  print('\x1B[33m$msg\x1B[0m');
+  String? jsonData;
+  try {
+    jsonData = jsonEncode(msg);
+  } catch (e) {
+    jsonData = msg.toString();
+  }
+  log('\x1B[33m$jsonData\x1B[0m');
 }
 
 // Red text
 void logError(msg) {
-  print('\x1B[31m$msg\x1B[0m');
+  String? jsonData;
+  try {
+    jsonData = jsonEncode(msg);
+  } catch (e) {
+    jsonData = msg.toString();
+  }
+  log('\x1B[31m$jsonData\x1B[0m');
 }
