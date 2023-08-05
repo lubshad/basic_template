@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:basic_template/basic_template.dart';
@@ -52,18 +53,24 @@ class ApiClient {
     Map<String, String> headers = {
       'Content-Type': 'application/json',
     };
-    try {
-      logInfo(getPath(path));
-      var encodedParams = jsonEncode(params);
-      logInfo(encodedParams);
-      final response = await _client.post(getPath(path),
-          body: encodedParams, headers: headers);
-      var utfDecoded = utf8.decode(response.bodyBytes);
-      var decodedData = jsonDecode(utfDecoded);
-      logInfo(decodedData);
-      return decodedData;
-    } catch (e) {
-      rethrow;
+    const maxRetries = 3;
+    for (var i = 0; i < maxRetries; i++) {
+      try {
+        logInfo(getPath(path));
+        var encodedParams = jsonEncode(params);
+        logInfo(encodedParams);
+        final response = await _client.post(getPath(path),
+            body: encodedParams, headers: headers);
+        var utfDecoded = utf8.decode(response.bodyBytes);
+        var decodedData = jsonDecode(utfDecoded);
+        logInfo(decodedData);
+        return decodedData;
+      } on SocketException catch (e) {
+        await Future.delayed(const Duration(seconds: 1));
+        logInfo("Error Code ${e.osError?.errorCode} Retrying ...($i)");
+      } catch (e) {
+        rethrow;
+      }
     }
   }
 

@@ -1,5 +1,7 @@
 
 
+import 'package:flutter/foundation.dart';
+
 class ApiConstants {
   ApiConstants._();
   // local
