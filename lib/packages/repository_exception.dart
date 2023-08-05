@@ -18,7 +18,8 @@ mixin RepositoryExceptionMixin {
           case 54:
           case 60:
             await Future.delayed(const Duration(milliseconds: 10));
-            logInfo("retrying....($retry)");
+            logInfo(
+                "error Code ${e.osError?.errorCode}   retrying....($retry)");
             continue;
           default:
             logError("Check Network Connection $e");
