@@ -3,6 +3,7 @@ import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:basic_template/basic_template.dart';
+import 'package:http/http.dart';
 
 Stream<List<int>> getFileStream(Uint8List bytes) =>
     Stream.fromIterable([bytes]);
@@ -68,6 +69,11 @@ class ApiClient {
       } on SocketException catch (e) {
         // await Future.delayed(const Duration(seconds: 1));
         logInfo("Error Code ${e.osError?.errorCode} Retrying ...($i)");
+        continue;
+      } on ClientException catch (e) {
+        // await Future.delayed(const Duration(seconds: 1));
+        logInfo("${e.message} Retrying ...($i)");
+        continue;
       } catch (e) {
         rethrow;
       }
