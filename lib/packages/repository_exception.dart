@@ -17,7 +17,7 @@ mixin RepositoryExceptionMixin {
         switch (e.osError?.errorCode) {
           case 54:
           case 60:
-            // await Future.delayed(const Duration(seconds: 1));
+            await Future.delayed(const Duration(milliseconds: 10));
             logInfo("retrying....($retry)");
             continue;
           default:
