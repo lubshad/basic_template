@@ -53,7 +53,7 @@ class ApiClient {
     Map<String, String> headers = {
       'Content-Type': 'application/json',
     };
-    const maxRetries = 5;
+    const maxRetries = 10;
     for (var i = 0; i < maxRetries; i++) {
       try {
         logInfo(getPath(path));
@@ -66,7 +66,7 @@ class ApiClient {
         logInfo(decodedData);
         return decodedData;
       } on SocketException catch (e) {
-        await Future.delayed(const Duration(seconds: 1));
+        // await Future.delayed(const Duration(seconds: 1));
         logInfo("Error Code ${e.osError?.errorCode} Retrying ...($i)");
       } catch (e) {
         rethrow;
