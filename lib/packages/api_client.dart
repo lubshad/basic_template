@@ -53,7 +53,7 @@ class ApiClient {
     Map<String, String> headers = {
       'Content-Type': 'application/json',
     };
-    const maxRetries = 3;
+    const maxRetries = 5;
     for (var i = 0; i < maxRetries; i++) {
       try {
         logInfo(getPath(path));
