@@ -8,7 +8,7 @@ mixin RepositoryExceptionMixin {
   Future<Either<AppError, T>> exceptionHandler<T>(
     FutureOr computation,
   ) async {
-    const maxRetries = 10;
+    const maxRetries = 100;
     for (int retry = 0; retry < maxRetries; retry++) {
       try {
         final result = await computation;
