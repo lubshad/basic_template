@@ -5,6 +5,8 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:flutter/foundation.dart';
+
 void logInfo(msg) {
   String? jsonData;
   try {
@@ -12,7 +14,9 @@ void logInfo(msg) {
   } catch (e) {
     jsonData = msg.toString();
   }
-  log('\x1B[34m$jsonData\x1B[0m');
+  if (kDebugMode) {
+    log('\x1B[34m$jsonData\x1B[0m');
+  }
 }
 
 // Green text
@@ -23,9 +27,11 @@ void logSuccess(msg) {
   } catch (e) {
     jsonData = msg.toString();
   }
-  log(
-    '\x1B[32m$jsonData\x1B[0m',
-  );
+  if (kDebugMode) {
+    log(
+      '\x1B[32m$jsonData\x1B[0m',
+    );
+  }
 }
 
 // Yellow text
@@ -36,7 +42,9 @@ void logWarning(msg) {
   } catch (e) {
     jsonData = msg.toString();
   }
-  log('\x1B[33m$jsonData\x1B[0m');
+  if (kDebugMode) {
+    log('\x1B[33m$jsonData\x1B[0m');
+  }
 }
 
 // Red text
@@ -47,5 +55,7 @@ void logError(msg) {
   } catch (e) {
     jsonData = msg.toString();
   }
-  log('\x1B[31m$jsonData\x1B[0m');
+  if (kDebugMode) {
+    log('\x1B[31m$jsonData\x1B[0m');
+  }
 }
