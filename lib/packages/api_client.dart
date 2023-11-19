@@ -3,6 +3,7 @@ import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:basic_template/basic_template.dart';
+// ignore: depend_on_referenced_packages
 import 'package:http/http.dart';
 
 Stream<List<int>> getFileStream(Uint8List bytes) =>
@@ -13,6 +14,12 @@ class ApiClient {
   final String baseUrl;
 
   ApiClient(this._client, {required this.baseUrl});
+  final box = GetStorage();
+
+  addToken(Map<String, String> headers) {
+    String? token = box.read<String>("token");
+    headers.addAll({"Authorization": "Token $token"});
+  }
 
   dynamic formData(
       {required Map<String, dynamic> data,
@@ -24,6 +31,7 @@ class ApiClient {
     }
 
     var request = MultipartRequest("POST", Uri.parse(baseUrl + path));
+    addToken(request.headers);
 
     data.forEach((key, value) {
       if (value is List) {
@@ -54,6 +62,7 @@ class ApiClient {
     Map<String, String> headers = {
       'Content-Type': 'application/json',
     };
+    addToken(headers);
     const maxRetries = 10;
     for (var i = 0; i < maxRetries; i++) {
       try {
@@ -84,6 +93,7 @@ class ApiClient {
     Map<String, String> headers = {
       'Content-Type': 'application/json',
     };
+    addToken(headers);
     try {
       logInfo(getPath(path));
       logInfo(params);
