@@ -33,7 +33,7 @@ export 'package:permission_handler/permission_handler.dart';
 export 'package:path_provider/path_provider.dart';
 export 'package:get_storage/get_storage.dart';
 export 'package:sqflite/sqflite.dart';
-export 'package:path/path.dart';
+export 'package:path/path.dart' hide context;
 export 'package:package_info_plus/package_info_plus.dart';
 export 'package:file_picker/file_picker.dart';
 export 'package:http_parser/http_parser.dart';
