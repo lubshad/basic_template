@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 class DefaultLoadingWidget extends StatelessWidget {
-  const DefaultLoadingWidget({Key? key , this.color = Colors.blue}) : super(key: key);
+  const DefaultLoadingWidget({super.key, this.color = Colors.blue});
 
   final Color color;
 
   @override
   Widget build(BuildContext context) {
-    return  Center(
+    return Center(
       child: CircularProgressIndicator(
         color: color,
       ),
@@ -15,17 +15,15 @@ class DefaultLoadingWidget extends StatelessWidget {
   }
 }
 
-
-
 class Loading extends StatelessWidget {
   const Loading({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-        onWillPop: () => Future.value(false),
+    return PopScope(
+        canPop: false, 
         child: Container(
             alignment: Alignment.center,
             child: const CircularProgressIndicator()));

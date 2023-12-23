@@ -9,15 +9,14 @@ class NetworkResource extends StatelessWidget {
   final bool isLoading;
 
   const NetworkResource(
-      {Key? key,
+      {super.key,
       required this.child,
       this.loadingWidget = const Center(child: CircularProgressIndicator()),
       required this.error,
       required this.isLoading,
       this.errorWidget = const Center(
         child: Text("Unexpected Error"),
-      )})
-      : super(key: key);
+      )});
 
   @override
   Widget build(BuildContext context) {
