@@ -18,7 +18,9 @@ class ApiClient {
 
   addToken(Map<String, String> headers) {
     String? token = box.read<String>("token");
-    headers.addAll({"Authorization": "Token $token"});
+    if (token != null && token != "") {
+      headers.addAll({"Authorization": "Token $token"});
+    }
   }
 
   dynamic formData(
