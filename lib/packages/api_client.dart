@@ -3,6 +3,7 @@ import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:basic_template/basic_template.dart';
+import 'package:hive/hive.dart';
 // ignore: depend_on_referenced_packages
 import 'package:http/http.dart';
 
@@ -14,10 +15,11 @@ class ApiClient {
   final String baseUrl;
 
   ApiClient(this._client, {required this.baseUrl});
-  final box = GetStorage();
+  // final box = GetStorage();
+  final Box box = Get.find();
 
-  addToken(Map<String, String> headers) {
-    String? token = box.read<String>("token");
+  addToken(Map<String, String> headers) async {
+    String? token = box.get("token");
     if (token != null && token != "") {
       headers.addAll({"Authorization": "Token $token"});
     }
@@ -33,7 +35,7 @@ class ApiClient {
     }
 
     var request = MultipartRequest("POST", Uri.parse(baseUrl + path));
-    addToken(request.headers);
+    await addToken(request.headers);
 
     data.forEach((key, value) {
       if (value is List) {
@@ -64,7 +66,7 @@ class ApiClient {
     Map<String, String> headers = {
       'Content-Type': 'application/json',
     };
-    addToken(headers);
+    await addToken(headers);
     const maxRetries = 10;
     for (var i = 0; i < maxRetries; i++) {
       try {
@@ -95,7 +97,7 @@ class ApiClient {
     Map<String, String> headers = {
       'Content-Type': 'application/json',
     };
-    addToken(headers);
+    await addToken(headers);
     try {
       logInfo(getPath(path));
       logInfo(params);
