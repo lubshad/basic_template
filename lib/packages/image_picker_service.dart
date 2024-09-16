@@ -50,9 +50,9 @@ class ImagePickerService {
       maxWidth: 300,
       maxHeight: 300,
       sourcePath: imageFile.path,
-      aspectRatioPresets: [
-        CropAspectRatioPreset.square,
-      ],
+      // aspectRatioPresets: [
+      //   CropAspectRatioPreset.square,
+      // ],
       uiSettings: [
         AndroidUiSettings(
             toolbarTitle: 'Cropper',
